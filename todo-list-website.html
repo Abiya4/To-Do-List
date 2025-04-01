@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Jua&family=Just+Me+Again+Down+Here&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>To - Do List</h1>
+        
+        <div class="content">
+            <div class="left-side">
+                <h2>Got any task?</h2>
+                <div class="input-container">
+                    <input type="text" id="taskInput" placeholder="What will you be working on......" />
+                    <button class="add-btn" id="addBtn">Add</button>
+                </div>
+                
+                <div class="ongoing-task">
+                    <h2>Ongoing Task :</h2>
+                    <div class="ongoing-display" id="ongoingTask"></div>
+                </div>
+                
+                <div class="completed-all">
+                    <h2>Completed All?</h2>
+                    <button class="remove-all-btn" id="removeAllBtn">Remove all</button>
+                </div>
+            </div>
+            
+            <div class="note-container">
+                <div class="note" id="noteContainer">
+                    <div class="note-lines">
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                    </div>
+                    
+                    <div class="task-list" id="taskList">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const taskInput = document.getElementById('taskInput');
+    const addBtn = document.getElementById('addBtn');
+    const taskList = document.getElementById('taskList');
+    const ongoingTask = document.getElementById('ongoingTask');
+    const removeAllBtn = document.getElementById('removeAllBtn');
+    
+    const initialTasks = [
+    ];
+    
+    let tasks = [...initialTasks];
+    renderTasks();
+    updateOngoingTask();
+    
+    addBtn.addEventListener('click', function() {
+        const taskText = taskInput.value.trim();
+        if (taskText) {
+            tasks.push({ text: taskText, completed: false });
+            taskInput.value = '';
+            renderTasks();
+            updateOngoingTask();
+        }
+    });
+    
+    taskInput.addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            addBtn.click();
+        }
+    });
+    
+    removeAllBtn.addEventListener('click', function() {
+        tasks = [];
+        renderTasks();
+        updateOngoingTask();
+    });
+    
+    function renderTasks() {
+        taskList.innerHTML = '';
+        
+        tasks.forEach((task, index) => {
+            const taskItem = document.createElement('div');
+            taskItem.className = 'task-item';
+            
+            const taskContent = document.createElement('div');
+            taskContent.className = task.completed ? 'task-text completed' : 'task-text';
+            
+            const taskNumber = document.createElement('span');
+            taskNumber.className = 'task-number';
+            taskNumber.textContent = (index + 1) + '. ';
+            
+            taskContent.appendChild(taskNumber);
+            taskContent.appendChild(document.createTextNode(task.text));
+            
+            const removeBtn = document.createElement('div');
+            removeBtn.className = 'remove-btn';
+            removeBtn.innerHTML = 'X';
+            
+            removeBtn.addEventListener('click', function() {
+                tasks[index].completed = true;
+                renderTasks();
+                updateOngoingTask();
+            });
+            
+            taskItem.appendChild(taskContent);
+            
+            if (!task.completed) {
+                taskItem.appendChild(removeBtn);
+            }
+            
+            taskList.appendChild(taskItem);
+        });
+    }
+    
+    function updateOngoingTask() {
+        const incompleteTasks = tasks.filter(task => !task.completed);
+        if (incompleteTasks.length > 0) {
+            ongoingTask.textContent = incompleteTasks[0].text;
+        } else {
+            ongoingTask.textContent = "No ongoing tasks";
+        }
+    }
+});
+</script>
+</html>

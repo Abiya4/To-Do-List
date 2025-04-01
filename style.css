@@ -1,0 +1,200 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 64px;
+    margin-bottom: 30px;
+    font-family: "Jost", sans-serif;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.left-side {
+    flex: 1;
+}
+
+.left-side h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: "Jua", sans-serif;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: "Jua", sans-serif;
+}
+
+.add-btn {
+    background-color: #c0d9bb;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 25px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: "Jua", sans-serif;
+}
+
+.ongoing-task {
+    margin-bottom: 30px;
+}
+
+.ongoing-task h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.ongoing-display {
+    font-size: 32px;
+    font-family: "Just Me Again Down Here", cursive;
+}
+
+.completed-all {
+    margin-top: 50px;
+}
+
+.completed-all h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.remove-all-btn {
+    background-color: #b13b3b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 25px;
+    cursor: pointer;
+    font-family: "Jua", sans-serif;
+    font-size: 20px;
+}
+
+.note-container {
+    flex: 1;
+}
+
+.note {
+    background-color: #fefad4;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 600px;
+    position: relative;
+    -webkit-box-shadow: 0px 14px 26px -10px rgba(69,69,69,0.74);
+-moz-box-shadow: 0px 14px 26px -10px rgba(69,69,69,0.74);
+box-shadow: 0px 14px 26px -10px rgba(69,69,69,0.74);
+}
+
+.note-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+}
+
+.note-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #000;
+    opacity: 50%;
+}
+
+/* Create notebook lines */
+.note-line:nth-child(1) { top: 40px; }
+.note-line:nth-child(2) { top: 80px; }
+.note-line:nth-child(3) { top: 120px; }
+.note-line:nth-child(4) { top: 160px; }
+.note-line:nth-child(5) { top: 200px; }
+.note-line:nth-child(6) { top: 240px; }
+.note-line:nth-child(7) { top: 280px; }
+.note-line:nth-child(8) { top: 320px; }
+.note-line:nth-child(9) { top: 360px; }
+.note-line:nth-child(10) { top: 400px; }
+.note-line:nth-child(11) { top: 440px; }
+.note-line:nth-child(12) { top: 480px; }
+.note-line:nth-child(13) { top: 520px; }
+.note-line:nth-child(14) { top: 560px; }
+
+.task-list {
+    position: relative;
+    z-index: 2;
+    margin-top: 20px; 
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px; 
+    padding: 0 10px;
+    position: relative;
+}
+
+.task-text {
+    flex: 1;
+    font-size: 32px;
+    display: flex;
+    align-items: center;
+    font-family: "Just Me Again Down Here", cursive;
+}
+
+.task-number {
+    margin-right: 10px;
+    font-size: 32px;
+    font-family: "Just Me Again Down Here", cursive;
+}
+
+.completed {
+    text-decoration: line-through;
+}
+
+.remove-btn {
+    background-color: #b13b3b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: "Jua", sans-serif;
+}
